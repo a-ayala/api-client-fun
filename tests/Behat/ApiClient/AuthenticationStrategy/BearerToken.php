@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Behat\Pho\AuthenticationStrategy;
+namespace App\Tests\Behat\ApiClient\AuthenticationStrategy;
 
-use App\Tests\Behat\Pho\HttpClient\HttpClient;
+use App\Tests\Behat\ApiClient\HttpClient\HttpClient;
 
 class BearerToken implements AuthenticationStrategy
 {

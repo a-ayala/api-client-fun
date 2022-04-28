@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Behat\Pho\Exception;
+namespace App\Tests\Behat\ApiClient\Exception;
 
 use Psr\Http\Client\ClientExceptionInterface;
 use RuntimeException;

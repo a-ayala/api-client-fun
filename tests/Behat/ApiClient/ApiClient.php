@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Behat\Pho;
+namespace App\Tests\Behat\ApiClient;
 
-use App\Tests\Behat\Pho\AuthenticationStrategy\AuthenticationStrategy;
-use App\Tests\Behat\Pho\HttpClient\HttpClient;
+use App\Tests\Behat\ApiClient\AuthenticationStrategy\AuthenticationStrategy;
+use App\Tests\Behat\ApiClient\HttpClient\HttpClient;
 use Psr\Http\Message\ResponseInterface;
 
 /**
- * @todo Thought: rather than standard get/post/etc methods Pho could act more like an SDK and instead understand the structure of what it's consuming.
+ * @todo Thought: rather than standard get/post/etc methods ApiClient could act more like an SDK and instead understand the structure of what it's consuming.
  * We'd need a "PhoCore" to do that however, then extend it to implement methods.
  *
- * @todo If we adopt this strategy then should Pho really make HTTP verb based requests?
- * I.e. Pho could just expose a "go" / "visit" / "fetch" method which will let the Concrete decide HOW to send it
- * If this were the case then Pho could infact mock requests from anything our system exposes an adapter for.
+ * @todo If we adopt this strategy then should ApiClient really make HTTP verb based requests?
+ * I.e. ApiClient could just expose a "go" / "visit" / "fetch" method which will let the Concrete decide HOW to send it
+ * If this were the case then ApiClient could infact mock requests from anything our system exposes an adapter for.
  */
-class Pho
+class ApiClient
 {
     public function __construct(
         private HttpClient $httpClient,
@@ -43,7 +43,7 @@ class Pho
 
     /**
      * @todo BIG NO NO but perhaps with some open/closed pattern we could inject headers dynamically.
-     * Potentially with a service factory or something... I.e. the factory, if in a dev environment, could create Pho and set the XDEBUG header
+     * Potentially with a service factory or something... I.e. the factory, if in a dev environment, could create ApiClient and set the XDEBUG header
      */
     public function debug(): self
     {

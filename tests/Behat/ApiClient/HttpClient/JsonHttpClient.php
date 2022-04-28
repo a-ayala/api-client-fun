@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Behat\Pho\HttpClient;
+namespace App\Tests\Behat\ApiClient\HttpClient;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Cookie\CookieJar;

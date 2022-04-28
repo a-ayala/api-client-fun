@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PhpTestFrameworkSettings">
+    <test_tools>
+      <tool tool_name="Behat">
+        <settings>
+          <configurations>
+            <local_configuration configuration_file_path="$PROJECT_DIR$/behat.yml.dist" executable_path="$PROJECT_DIR$/vendor/behat/behat/bin/behat" use_configuration_file="true" />
+            <configuration_by_sdk interpreter_id="c25ae594-1312-4347-9090-7e1f7c653fec" configuration_file_path="/var/www/symfony_docker/behat.yml.dist" executable_path="/var/www/symfony_docker/vendor/behat/behat/bin/behat" use_configuration_file="true" />
+          </configurations>
+        </settings>
+      </tool>
+    </test_tools>
+  </component>
+  <component name="PhpTestFrameworkVersionCache">
+    <tools_cache>
+      <tool tool_name="Behat">
+        <cache>
+          <versions>
+            <info id="Local" version="Behat version can't be detected. Default PHP interpreter is not local" />
+            <info id="interpreter-c25ae594-1312-4347-9090-7e1f7c653fec" version="3.8.1" />
+          </versions>
+        </cache>
+      </tool>
+    </tools_cache>
+  </component>
+</project>

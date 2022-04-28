@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\Behat;
+namespace App\Tests\Behat\Context;
 
+use App\Tests\Behat\ApiClient\AuthenticationStrategy\BearerToken;
+use App\Tests\Behat\ApiClient\ApiClient;
 use Behat\Behat\Context\Context;
-use Behat\Pho\Pho;
 use GuzzleHttp\Client;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\KernelInterface;
@@ -25,12 +26,12 @@ final class DemoContext implements Context
     /** @var Response|null */
     private $response;
 
-    private Pho $pho;
+    private ApiClient $apiClient;
 
-    public function __construct(KernelInterface $kernel, Pho $pho)
+    public function __construct(KernelInterface $kernel, ApiClient $apiClient)
     {
         $this->kernel = $kernel;
-        $this->pho = $pho;
+        $this->apiClient = $apiClient;
     }
 
     /**
@@ -38,10 +39,13 @@ final class DemoContext implements Context
      */
     public function aDemoScenarioSendsARequestTo(string $path): void
     {
-        // $this->response = $this->kernel->handle(Request::create($path, 'GET'));
-        $response = (new Client())->get('http://nginx?XDEBUG_SESSION=dev');
+        // @todo POTENTIALLY by default we could use a factory to create an already authenticated instance of ApiClient
+        // Ideally we'd only authenticate once per scenario or even suite if possible (although may not be considering our scopes)
+        $this->apiClient->authenticate(new BearerToken('abc'));
+        $this->apiClient->debug()->get('/'); // ?XDEBUG_SESSION=dev
 
-        dd(json_decode($response->getBody()->getContents()));
+        // $this->response = $this->kernel->handle(Request::create($path, 'GET'));
+        // $response = (new Client())->get('http://nginx?XDEBUG_SESSION=dev');
     }
 
     /**

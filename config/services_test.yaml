@@ -1,0 +1,13 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    App\Tests\Behat\:
+        resource: '../tests/Behat/*'
+
+    App\Tests\Behat\ApiClient\Configuration:
+        factory: ['App\Tests\Behat\ApiClient\ConfigurationFactory', 'create']
+
+    # Vendor
+    GuzzleHttp\Client:
